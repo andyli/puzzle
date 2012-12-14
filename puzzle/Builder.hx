@@ -54,6 +54,9 @@ class Builder {
 		if (localClass.interfaces.exists(function(t) return t.t.toString() == "puzzle.Puzzle")) { 
 			//base Puzzle
 			
+			if (!localClass.isInterface)
+				Context.error("Only interface can implements Puzzle.", localClass.pos);
+			
 			puzzleFields.set(Context.getLocalClass().toString(), fields);
 		
 			for (field in fields) {

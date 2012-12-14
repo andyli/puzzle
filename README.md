@@ -2,9 +2,9 @@
 
 A tiny macro-based framework to compose class from puzzles.
 
-## learn by example
+## Learn by example
 
-Puzzle classes directly implement `puzzle.Puzzle`:
+Puzzles are interfaces that directly implement `puzzle.Puzzle`:
 
 ```
 interface A implements puzzle.Puzzle {
