@@ -1,13 +1,14 @@
 #if macro
 import haxe.macro.Context;
 #end
+import puzzle.*;
 
-interface A implements puzzle.Puzzle {
+interface A implements Puzzle {
 	public var a(get_a, null):Int;
 	public function new():Void {}
 }
 
-interface A_impl implements puzzle.Puzzle {
+interface A_impl implements Puzzle {
 	private function get_a():Int {
 		return 123;
 	}

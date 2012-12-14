@@ -1,4 +1,4 @@
-# puzzle
+# Puzzle
 
 A tiny macro-based framework to compose class from puzzles.
 
