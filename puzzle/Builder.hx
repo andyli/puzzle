@@ -9,7 +9,7 @@ class Builder {
 	static var puzzleFields = new Hash<Array<Field>>();
 	
 	/**
-	* Try infer the type from e
+	* Try inferring the type from e
 	*/
 	static function inferType(t:Null<ComplexType>, e:Null<Expr>):Null<ComplexType> {
 		if (t == null && e != null) {
@@ -22,7 +22,7 @@ class Builder {
 	}
 	
 	/**
-	* Try infer the type of a function
+	* Try inferring the type of a function
 	*/
 	static function inferFunctionType(func:Function, pos:Position):Null<{args : Array<ComplexType>, ret : ComplexType}> {
 		try {
@@ -78,10 +78,14 @@ class Builder {
 						FieldType.FProp(get, set, inferType(t, e), null);
 				}
 				
+				if (!(field.access.has(APublic) || field.access.has(APrivate))){
+					Context.error("Please declare 'public'/'private' explicitly.", field.pos);
+				}
+				
 				newFields.push({
 					name: field.name,
 					doc: field.doc,
-					access: field.access.has(APublic) ? field.access : field.access.concat([APrivate]),
+					access: field.access,
 					kind: kind,
 					pos: field.pos,
 					meta: field.meta

@@ -8,7 +8,7 @@ interface A implements puzzle.Puzzle {
 }
 
 interface A_impl implements puzzle.Puzzle {
-	function get_a():Int {
+	private function get_a():Int {
 		return 123;
 	}
 }
