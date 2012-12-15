@@ -1,5 +1,5 @@
 -neko bin/Test.n
--main Test
+-main TestAll
 -cp test
 -D haxe3
 -cmd neko bin/Test.n

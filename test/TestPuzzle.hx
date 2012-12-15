@@ -2,6 +2,8 @@
 import haxe.macro.Context;
 #end
 import puzzle.*;
+import puzzle.macro.ExprUtils;
+import puzzle.macro.ComplexTypeUtils;
 
 interface A implements Puzzle {
 	public var a(get_a, null):Int;
@@ -16,7 +18,7 @@ interface A_impl implements Puzzle {
 
 class RealA implements A, implements A_impl {}
 
-class Test extends haxe.unit.TestCase {
+class TestPuzzle extends haxe.unit.TestCase {
 	@:macro static function typeOf(e) {
 		return Context.makeExpr(Std.string(Context.typeof(e)), e.pos);
 	}
@@ -27,7 +29,7 @@ class Test extends haxe.unit.TestCase {
 	
 	static public function main():Void {
 		var runner = new haxe.unit.TestRunner();
-		runner.add(new Test());
+		runner.add(new TestPuzzle());
 		runner.run();
 	}
 }
