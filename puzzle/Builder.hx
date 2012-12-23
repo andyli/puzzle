@@ -101,8 +101,22 @@ class Builder {
 			for (t in localClass.interfaces) {
 				var tname = t.t.toString();
 				if (puzzleFields.exists(tname)) {
-					var puzzleField = puzzleFields.get(tname);
-					newFields = newFields.concat(puzzleField);
+					var puzzleFields = puzzleFields.get(tname);
+					for (puzzleField in puzzleFields) {
+						if (!newFields.exists(function(f) { //puzzle field is not overriden
+							if (f.name == puzzleField.name) {
+								if (f.access.has(AOverride))
+									f.access.remove(AOverride);
+								else
+									Context.error(f.name + " already exist in " + tname + ". Mark it as `override` if needed.", f.pos);
+								return true;
+							} else {
+								return false;
+							}
+						})) {
+							newFields.push(puzzleField);
+						}
+					}
 				}
 			}
 		}
