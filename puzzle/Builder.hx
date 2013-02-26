@@ -6,7 +6,7 @@ import haxe.macro.Type;
 using Lambda;
 
 class Builder {
-	static var puzzleFields = new Hash<Array<Field>>();
+	static var puzzleFields = new Map<String,Array<Field>>();
 	
 	/**
 	* Try inferring the type from e
@@ -42,7 +42,7 @@ class Builder {
 		return null;
 	}
 	
-	@:macro public static function build():Array<Field> {
+	macro public static function build():Array<Field> {
 		var localClass = Context.getLocalClass().get();
 		var fields = Context.getBuildFields();
 		
@@ -55,7 +55,7 @@ class Builder {
 			//base Puzzle
 			
 			if (!localClass.isInterface)
-				Context.error("Only interface can implements Puzzle.", localClass.pos);
+				Context.error("Only interface can extends Puzzle.", localClass.pos);
 			
 			puzzleFields.set(Context.getLocalClass().toString(), fields);
 		

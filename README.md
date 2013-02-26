@@ -7,12 +7,12 @@ A tiny macro-based framework to compose class from puzzles.
 Puzzles are interfaces that directly implement `puzzle.Puzzle`:
 
 ```
-interface A implements puzzle.Puzzle {
+interface A extends puzzle.Puzzle {
 	public var a(get_a, null):Int;
 	public function new():Void {}
 }
 
-interface A_impl implements puzzle.Puzzle {
+interface A_impl extends puzzle.Puzzle {
 	private function get_a():Int {
 		return 123;
 	}
@@ -26,7 +26,7 @@ Notice that `A` contains a contructor, which is forbidden in interface in Haxe, 
 Here we come to put the two pieces together:
 
 ```
-class RealA implements A, implements A_impl {}
+class RealA implements A implements A_impl {}
 ```
 
 `RealA` now contains all the members of `A` and `A_impl`, including the constructor from `A`.

@@ -33,7 +33,7 @@ class ExprUtils {
 	 */
 	static public function traverse(expr:Null<Expr>, callb:Null<Expr>->List<Expr>->TraverseControl, ?preorder:Bool = true, ?getChildrenFunc:Null<Expr>->Array<Null<Expr>>, ?stack:List<Expr>):Bool {
 		if (stack == null) stack = new List();
-		if (getChildrenFunc == null) getChildrenFunc = callback(getExprs, _, false);
+		if (getChildrenFunc == null) getChildrenFunc = getExprs.bind(_, false);
 		stack.push(expr);
 		
 		var ret:Bool;
