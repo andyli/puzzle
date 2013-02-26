@@ -4,7 +4,7 @@ A tiny macro-based framework to compose class from puzzles.
 
 ## Learn by example
 
-Puzzles are interfaces that directly implement `puzzle.Puzzle`:
+Puzzles are interfaces that directly extend `puzzle.Puzzle`:
 
 ```
 interface A extends puzzle.Puzzle {
