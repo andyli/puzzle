@@ -1,4 +1,4 @@
-# Puzzle
+# Puzzle [![Build Status](https://travis-ci.org/andyli/puzzle.png?branch=master)](https://travis-ci.org/andyli/puzzle)
 
 A tiny macro-based framework to compose class from puzzles.
 
