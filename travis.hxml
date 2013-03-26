@@ -1,4 +1,0 @@
--neko bin/TestAll.n
--main TestAll
--cp test
--cmd neko bin/TestAll.n
