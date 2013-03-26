@@ -8,7 +8,7 @@ before_script:
   - sudo apt-get install haxe -y
   - mkdir ~/haxelib
   - haxelib setup ~/haxelib
+  - mkdir bin
 
 script:
-  - mkdir bin
-  - haxe travis.hxml
+  - haxe -neko bin/TestAll.n -main TestAll -cp test && neko bin/TestAll.n
